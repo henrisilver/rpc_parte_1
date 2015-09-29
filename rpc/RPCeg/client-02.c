@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* myrpc-server-v01 - Very Simple RPC Server, vr. 01
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -22,10 +22,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <stuff.h>
+
 int main (int argc, char **argv)
 {
+  int a;
 
-  printf ("1.618\n");
+  a = 10;
+  a = plusone (a);
+
+  printf ("Plus one = %d\n", a);
 
   return EXIT_SUCCESS;
 }

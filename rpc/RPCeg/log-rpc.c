@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* log-rpc.c - Very Simple RPC Server, vr. 01
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -19,13 +19,21 @@
 
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+/* Instructions: modify this file to meet the project specification. */
 
-int main (int argc, char **argv)
+#include <stuff.h>
+#include <debug.h>
+
+/* Read log file and return the value. */
+int read_log (void)
 {
+  fatal (1, "Not implemented");
+  return 0;
+}
 
-  printf ("1.618\n");
-
-  return EXIT_SUCCESS;
+/* Increment the value on the log file. */
+int write_log (void)
+{
+  fatal (1, "Not implemented");
+  return 0;
 }

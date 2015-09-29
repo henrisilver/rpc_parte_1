@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* read_log.c - Write to log.
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -25,7 +25,6 @@
 int main (int argc, char **argv)
 {
 
-  printf ("1.618\n");
-
+  
   return EXIT_SUCCESS;
 }

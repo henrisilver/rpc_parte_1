@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* stuff.c - Very Simple RPC Server, vr. 01
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -21,11 +21,32 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stuff.h>
 
-int main (int argc, char **argv)
+/* Return the value of PI. */
+
+float pi(void)
 {
+  return 3.14;
+}
 
-  printf ("1.618\n");
+/* Return the value of Phi. */
 
-  return EXIT_SUCCESS;
+float phi (void)
+{
+  return 1.618;
+}
+
+/* Return n+1. */
+
+int plusone (int n)
+{
+  return n+1;
+}
+
+/* Increment n. */
+
+void increment (int *n)
+{
+  *n = *n+1;
 }
