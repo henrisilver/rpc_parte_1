@@ -65,5 +65,16 @@ void increment (int *n)
   fatal (1, "Not implemented");
 }
 
+float phi(void)
+{
+  char buffer[BUFFSIZE];
+
+  read_config();
+
+  call_remote (SERVER, PORT, "phi", buffer);
+
+  return atof(buffer);
+}
+
 
 
