@@ -36,6 +36,9 @@
 # Give your project a name, e.g.
 # PROJECT = FooBar
 
+# Added fix for not finding the correct library path
+export LD_LIBRARY_PATH=.
+
 PROJECT = RPCeg
 
 # Name your project's binaires, eg.
