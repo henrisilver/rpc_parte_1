@@ -31,7 +31,7 @@ int main (int argc, char **argv)
 
   /* Uncomment the line bellow. */
 
-  /* printf ("Phi = %f\n", phi());  */
+  printf ("Phi = %f\n", phi());
 
   return EXIT_SUCCESS;
 }
