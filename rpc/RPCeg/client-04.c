@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* myrpc-server-v01 - Very Simple RPC Server, vr. 01
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -22,10 +22,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <stuff.h>
+#include <debug.h>
+
 int main (int argc, char **argv)
 {
+  int n;
 
-  printf ("1.618\n");
+  n = write_log ();
+  fatal (n<0, "Error writing log");
+
+  n = read_log ();
+  fatal (n<0, "Error reading log");
+
+  printf ("New log: %d\n", n);
 
   return EXIT_SUCCESS;
 }

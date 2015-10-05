@@ -1,6 +1,6 @@
-/* phi.c - Output value of the constant pi.
+/* foo.c - Foo
 
-   Copyright 2015  Silveira H. A. M.   <henrique.silveira@usp.br>
+   Copyright 2014  Monaco F. J.   <monaco@icmc.usp.br>
 
    This file is part of POSIXeg. 
 
@@ -24,8 +24,7 @@
 
 int main (int argc, char **argv)
 {
-
-  printf ("1.618\n");
-
+  printf ("Foo!\n");
+  
   return EXIT_SUCCESS;
 }
