@@ -21,13 +21,26 @@
 
 /* Instructions: modify this file to meet the project specification. */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <stuff.h>
+#include <rpc.h>
 #include <debug.h>
+
+/* See below. */
+
+#define SERVER getconf ("server")
+#define PORT atoi(getconf ("port"))
+
+/*
+ Remote functions.
+ */
+
 
 /* Read log file and return the value. */
 int read_log (void)
 {
-    char buffer[BUFFSIZE];
+    char buffer[LOGBUFFSIZE];
     
     char string[30];
     
@@ -43,7 +56,7 @@ int read_log (void)
 /* Increment the value on the log file. */
 int write_log (void)
 {
-    char buffer[BUFFSIZE];
+    char buffer[LOGBUFFSIZE];
     
     char string[30];
     
