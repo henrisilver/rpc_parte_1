@@ -41,7 +41,7 @@ PROJECT = RPCeg
 # Name your project's binaires, eg.
 # bin = foo bar
 
-bin = rpc-server foo increment pi plusone read_log write_log client-01 client-01a client-02 client-03 client-04 rpc-server-faulty
+bin = rpc-server foo increment pi phi plusone read_log write_log client-01 client-01a client-02 client-03 client-04 rpc-server-faulty
 
 # For each item in $(bin), name the objects needed to build it, e.g.
 # foo_obj = main_foo.o 
@@ -53,10 +53,10 @@ rpc-server-faulty_obj = rpc-server-faulty.o
 foo_obj = foo.o
 increment_obj = increment.o
 pi_obj = pi.o
+phi_obj = phi.o
 plusone_obj = plusone.o
 read_log_obj = read_log.o
 write_log_obj = write_log.o
-phi_obj = phi.o
 
 client-01_obj = client-01.o
 client-01a_obj = client-01a.o
@@ -119,7 +119,7 @@ libstuff_h = stuff.h
 
 # Extra files to go in the distribution (add as needed)
 
-EXTRA_DIST = Makefile AUTHORS rpc.config
+EXTRA_DIST = Makefile AUTHORS
 
 # Installation prefix
 
@@ -155,7 +155,7 @@ all_aux_bin_obj = $(foreach i, $(aux_bin:%=%_obj), $($i))
 
 all: $(lib_static) $(lib_shared) $(bin) $(aux_bin) 
 
-static: all
+static: $(lib_static) $(bin:%=%) $(aux_bin:%=%) 
 
 .SECONDEXPANSION:
 
@@ -169,17 +169,13 @@ $(lib_shared) : %.so : $$($$*_obj:.o=-pic.o)
 
 # Automatic rules for building binaires
 
-ifeq (,$(findstring static,$(MAKECMDGOALS)))
-
 $(bin) $(aux_bin): % : $$($$*_obj)  $$($$*_lib:%.%.so)  
 	$(CC) $(LD_FLAGS) $(LDFLAGS) $(filter %.o, $^)  $(patsubst lib%, -l%, $($*_lib)) $(patsubst lib%, -l%, $($*_lib_other))  -o $@
 
-else
 
-$(bin) $(aux_bin): % : $$($$*_obj)  $$($$*_lib:%.%.a)  
-	$(CC) $(LD_FLAGS) $(LDFLAGS) $(filter %.o, $^) -Wl,-Bstatic $(patsubst lib%, -l%, $($*_lib)) -Wl,-Bdynamic $(patsubst lib%, -l%, $($*_lib_other)) -o $@ 
+$(bin:%=%-static) $(aux_bin:%=%-static): %-static : $$($$*_obj)  $$($$*_lib:%.%.so)  
+	$(CC) $(LD_FLAGS) $(LDFLAGS) $(filter %.o, $^) $(patsubst lib%, -l%, $($*_lib)) $(patsubst lib%, -l%, $($*_lib_other)) -o $@ 
 
-endif
 
 # Automatic sufix-rules
 
@@ -264,5 +260,6 @@ test: all
 	@if test -f Makefile.tests ; then \
 	$(MAKE) -f Makefile.tests $(filter-out test, $(MAKECMDGOALS));\
 	else echo "No test to be performed"; fi
+
 
 

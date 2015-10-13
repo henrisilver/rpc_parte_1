@@ -27,13 +27,31 @@
 /* Read log file and return the value. */
 int read_log (void)
 {
-  fatal (1, "Not implemented");
-  return 0;
+    char buffer[BUFFSIZE];
+    
+    char string[30];
+    
+    sprintf(string, "read_log %s", LOGFILE);
+    
+    read_config();
+    
+    call_remote (SERVER, PORT, string, buffer);
+    
+    return atoi(buffer);
 }
 
 /* Increment the value on the log file. */
 int write_log (void)
 {
-  fatal (1, "Not implemented");
-  return 0;
+    char buffer[BUFFSIZE];
+    
+    char string[30];
+    
+    sprintf(string, "write_log %s", LOGFILE);
+    
+    read_config();
+    
+    call_remote (SERVER, PORT, string, buffer);
+    
+    return atoi(buffer);
 }
