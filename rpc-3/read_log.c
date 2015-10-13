@@ -24,7 +24,30 @@
 
 int main (int argc, char **argv)
 {
-
+    FILE *fp;
+    int n;
+    
+    fp = fopen (argv[1], "r");
+    
+    /* If file does not exist, initialize it. */
+    if (!fp)
+    {
+        fp = fopen (argv[1], "w");
+        sysfault (!fp, -1);
+        fprintf (fp, "%d\n", 0);
+        fclose (fp);
+        printf("%d\n", 0);
+        
+        return EXIT_SUCCESS;
+    }
+    
+    sysfault (!fp, -1);
+    
+    fscanf (fp, "%d", &n);
+    
+    fclose (fp);
+    
+    printf("%d\n", n);
   
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
