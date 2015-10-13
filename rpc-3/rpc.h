@@ -29,7 +29,7 @@
 /*  Connect to server (hostname, port), call function 'string' and receive
     the reply in 'buffer'*/
 
-void call_remote (const char *hostname, int port, char *string, char *buffer);
+int call_remote (const char *hostname, int port, char *string, char *buffer);
 
 /* Read configuration file. */
 void read_config (void);
