@@ -40,15 +40,22 @@
 /* Read log file and return the value. */
 int read_log (void)
 {
-    char buffer[LOGBUFFSIZE];
+    int timeout = 0;
+    do {
+        
+        char buffer[LOGBUFFSIZE];
+        
+        char string[30];
+        
+        sprintf(string, "read_log %s", LOGFILE);
+        
+        read_config();
+        
+        // check_timeout(); -> implementar
+        
+        call_remote (SERVER, PORT, string, buffer);
     
-    char string[30];
-    
-    sprintf(string, "read_log %s", LOGFILE);
-    
-    read_config();
-    
-    call_remote (SERVER, PORT, string, buffer);
+    } while(timeout);
     
     return atoi(buffer);
 }
