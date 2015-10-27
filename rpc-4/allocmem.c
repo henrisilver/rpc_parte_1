@@ -18,14 +18,10 @@
     along with .  If not, see <http://www.gnu.org/licenses/>. 
 
 */
-#include <stdio.h>
+
 #include <stdlib.h>
+#include <stdio.h>
 #include <stuff.h>
-#include <rpc.h>
-#include <debug.h>
-#define SERVER getconf ("server")
-#define PORT atoi(getconf ("port"))
-#include <string.h>
 
 /* These functions correspond to the local implementation and were
    copied from memory. c. Please, modify them to implement the
@@ -33,58 +29,30 @@
 
 buffer_t new_buffer (int size)
 {
-char buffer[BUFFSIZE];
-         
-    char string[100];
-    
-    sprintf(string, "mem_create %d", size);
-      
-    read_config();
-    
-    call_remote (SERVER, PORT, string, buffer);
-    
-    return (buffer_t) atoi(buffer);
+  void *p;
+  
+  p = malloc (size);
+
+  return p;
 }
 
 void set_buffer (buffer_t target, const char *source, int length)
 {
-    char buffer[BUFFSIZE];
-    
-    char string[100];
-    
-    sprintf(string, "mem_set %d %s %d", (int)target, source, length);
-    
-    read_config();
-    
-    call_remote (SERVER, PORT, string, buffer);
+  printf("Target: %d, Source: %d, Length: %d", (int)target, (int)source, (int)length);
+
   
 }
 
 void get_buffer (char *target, buffer_t source, int length)
 {
-    char buffer[BUFFSIZE];
-    
-    char string[100];
-    
-    sprintf(string, "mem_get %d %d", (int)source, length);
-    
-    read_config();
-    
-    call_remote (SERVER, PORT, string, buffer);
+  int i;
 
-    strcpy(target, buffer);
+  for (i=0; i<length; i++)
+    target[i] = source[i];
   
 }
 
-void free_buffer (buffer_t bufferr)
+void free_buffer (buffer_t buffer)
 {
-    char buffer[BUFFSIZE];
-    
-    char string[100];
-    
-    sprintf(string, "mem_free %d", (int)bufferr);
-    
-    read_config();
-    
-    call_remote (SERVER, PORT, string, buffer);
+  free (buffer);
 }

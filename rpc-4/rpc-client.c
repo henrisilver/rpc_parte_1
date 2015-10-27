@@ -33,6 +33,7 @@
 
 #include <rpc.h>
 #include <debug.h>
+#include <sys/time.h>
 
 #define HOSTNAME "localhost"
 #define PORT 5555

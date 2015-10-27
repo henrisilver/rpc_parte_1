@@ -41,7 +41,7 @@ PROJECT = RPCeg
 # Name your project's binaires, eg.
 # bin = foo bar
 
-bin = rpc-server foo increment pi plusone read_log write_log client-01 client-01a client-02 client-03 client-04 rpc-server-faulty client-05
+bin = rpc-server foo increment pi plusone read_log write_log client-01 client-01a client-02 client-03 client-04 rpc-server-faulty client-05 mem_create mem_set mem_get mem_free
 
 # For each item in $(bin), name the objects needed to build it, e.g.
 # foo_obj = main_foo.o 
@@ -57,6 +57,11 @@ phi_obj = phi.o
 plusone_obj = plusone.o
 read_log_obj = read_log.o
 write_log_obj = write_log.o
+
+mem_create_obj = mem_create.o
+mem_set_obj = mem_set.o
+mem_get_obj = mem_get.o
+mem_free_obj = mem_free.o
 
 client-01_obj = client-01.o
 client-01a_obj = client-01a.o
