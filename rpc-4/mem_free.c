@@ -27,7 +27,7 @@ typedef char * buffer_t;
 int main (int argc, char **argv)
 {
   char file[20];
-  sprintf(file, "rm mem/%d",(int) atoi(argv[1]));
-  system(file); 
+  sprintf(file, "mem/%d",(int) atoi(argv[1]));
+  remove(file); 
   return EXIT_SUCCESS;
 }
